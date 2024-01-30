@@ -1,5 +1,5 @@
-const logger = require('../log/logger')
-const Link = require('../model/link.model')
+const logger = require('../log/logger');
+const Link = require('../model/link.model');
 const {
     nanoid
 } = require('nanoid');
@@ -23,9 +23,23 @@ const addLink = async (req, res) => {
             message: error.message
         });
     }
+};
 
+const getLink = async (req, res) => {
+    try {
+        const data = await Link.findOne({
+            urlId: req.params.id
+        }).select('link');
+        res.status(200).json(data);
+    } catch (error) {
+        logger.error(error.message);
+        res.status(400).json({
+            message: error.message
+        });
+    }
 };
 
 module.exports = {
-    addLink
+    addLink,
+    getLink
 };
