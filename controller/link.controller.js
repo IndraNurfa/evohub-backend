@@ -14,7 +14,7 @@ const addLink = async (req, res) => {
     try {
         const shortLinkSave = await shortLink.save();
         res.status(200).json({
-            message: "Short Link saved successfully",
+            message: 'Short Link saved successfully',
             comment: shortLinkSave
         });
     } catch (error) {
@@ -28,8 +28,18 @@ const addLink = async (req, res) => {
 const getLink = async (req, res) => {
     try {
         const data = await Link.findOne({
-            urlId: req.params.id
+            $or: [{
+                urlId: req.params.id
+            }, {
+                customUrl: req.params.id
+            }]
         }).select('link');
+        if (!data) {
+            logger.error('Link not found');
+            return res.status(404).json({
+                message: 'Link not found'
+            });
+        }
         res.status(200).json(data);
     } catch (error) {
         logger.error(error.message);

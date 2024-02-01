@@ -8,12 +8,15 @@ const linkSchema = new mongoose.Schema({
     },
     link: {
         type: String,
-        required: true
+        required: [true, 'Link is empty']
     },
     createdAt: {
         type: Date,
         default: Date.now()
     },
+    userId: {
+        type: String,
+    }
 });
 
 module.exports = mongoose.model('Link', linkSchema);

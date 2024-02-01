@@ -6,8 +6,8 @@ const {
     getLink
 } = require('../controller/link.controller');
 
-router.post("/addLink", addLink);
-router.get("/:id", getLink);
+router.post('/addLink', addLink);
+router.get('/:id', getLink);
 
 
 module.exports = router;

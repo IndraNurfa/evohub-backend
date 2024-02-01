@@ -1,12 +1,12 @@
 const express = require('express');
-const logger = require("./log/logger");
-const bodyParser = require("body-parser");
+const logger = require('./log/logger');
+const bodyParser = require('body-parser');
 const {
     connect
 } = require('./config/db.config');
 const route = require('./routes/link.route');
 
-require("dotenv").config();
+require('dotenv').config();
 const {
     PORT
 } = process.env;
@@ -24,4 +24,4 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 
-app.use("/", route);
+app.use('/', route);
