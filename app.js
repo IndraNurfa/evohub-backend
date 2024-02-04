@@ -4,7 +4,8 @@ const bodyParser = require('body-parser');
 const {
     connect
 } = require('./config/db.config');
-const route = require('./routes/link.route');
+const linkRoute = require('./routes/link.route');
+const authRoute = require('./routes/auth.route');
 
 require('dotenv').config();
 const {
@@ -24,4 +25,5 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 
-app.use('/', route);
+app.use('/auth', authRoute);
+app.use('/', linkRoute);

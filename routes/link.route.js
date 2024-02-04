@@ -9,5 +9,4 @@ const {
 router.post('/addLink', addLink);
 router.get('/:id', getLink);
 
-
 module.exports = router;

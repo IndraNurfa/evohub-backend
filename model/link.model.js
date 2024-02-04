@@ -15,7 +15,7 @@ const linkSchema = new mongoose.Schema({
         default: Date.now()
     },
     userId: {
-        type: String,
+        type: String
     }
 });
 
